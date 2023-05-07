@@ -42,13 +42,12 @@ export class App extends Component {
     }
   };
 
-  removeContact = e => {
+  removeContact = id => {
     const { contacts } = this.state;
-    const idx = contacts.findIndex(
-      contact => contact.id === e.target.dataset.id
+    const contactsWithoutRemovedContact = contacts.filter(
+      contact => contact.id !== id
     );
-    contacts.splice(idx, 1);
-    this.setState({ contacts: contacts });
+    this.setState({ contacts: contactsWithoutRemovedContact });
   };
   render() {
     const { filter } = this.state;
